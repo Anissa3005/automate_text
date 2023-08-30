@@ -7,6 +7,7 @@ hour: int = now.hour
 minute_delay: int = now.minute + 2
 
 count: int = 0
+message: str = ""
 
 random_facts_india = [
     "The cow is considered sacred in the Hindu religion in India. They believe that each cow contain 330 millions gods and goddesses",
@@ -15,11 +16,17 @@ random_facts_india = [
     "India was the first country to mine diamonds. India was the source of diamonds were in the world from the 4th century BC for around 1000 years. The pure diamonds were found in the Krishna River Delta, located in Andhra Pradesh.",
     "As one of the oldest civilizations in the world, Indians gave the worlds a lot of important inventions and discoveries. You may don't know, but chess is one of them, the king Balhait ordered an Indian brahmin to design a game to promote the intelligence of people.",
     "India is the most vegetarian country in the world. But still, only about 40% of the population is vegetarian. Many Indians eat chicken and fish. The only truth here is that you won't find beef to eat in any restaurant, and at most you will find buffalo meat in a few places.",
-    "Did you know that India is the second largest country in the world that speaks English? So it is! English is the main language spoken in the country, apart from the 400 languages and dialects we have mentioned before."
+    "Did you know that India is the second largest country in the world that speaks English? So it is! English is the main language spoken in the country, apart from the 400 languages and dialects we have mentioned before.",
+    "Chenab Bridge is the highest rail bridge in the world. Not all of India's famous monuments are religious. The jaw-dropping bridge spanning the Chenab river in Jammu is 1,178 feet above the water.",
+    "Rajasthan has a Temple of Rats. The animal wonders of India continue. Although rats might not be the first species you think of to worship, there is a temple in Rajasthan dedicated to rats."
 ]
 
+if count > len(random_facts_india):
+    message = "Sorry I don't have any random facts anymore"
+else:
+    message = random_facts_india[count]
 
 
+pywhatkit.sendwhatmsg(PHONE_NUMBER, f"Random Fact {count + 1}: {message}", hour, minute_delay, 35, True)
 
 
-pywhatkit.sendwhatmsg(PHONE_NUMBER, "DIT IS EEN TEST voor mijn automated messaging python script 🐍", hour, minute_delay, 35, True, )
