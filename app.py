@@ -2,14 +2,25 @@ import pywhatkit
 from datetime import datetime
 from secrets_ import PHONE_NUMBER
 
+def get_var_value(filename="varstore.dat"):
+    with open(filename, "a+") as f:
+        f.seek(0)
+        val = int(f.read() or 0) + 1
+        f.seek(0)
+        f.truncate()
+        f.write(str(val))
+        return val
+
 now = datetime.now()
 hour: int = now.hour
 minute_delay: int = now.minute + 2
 
-count: int = 0
+count: int = get_var_value()
 message: str = ""
 
 random_facts_india = [
+    "",
+    ""
     "The cow is considered sacred in the Hindu religion in India. They believe that each cow contain 330 millions gods and goddesses",
     "The official religion of India is Hinduism, whose followers are adept to meditation and chanting mantras (words chanted in honor of specific deities). And did you know that Hinduism is the oldest religion on the world?",
     "The Taj Mahal is actually a tomb. Commissioned in 1632 by Emperor Shah Jahan to built the  Taj Mahal in honor of his late wife, Mumtaz Mahal,. Taj Mahal is among the Seven Wonders of the World, and is a stunning symbol of love and architectural brillance",
