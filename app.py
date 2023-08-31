@@ -1,4 +1,5 @@
 import pywhatkit
+import os
 from datetime import datetime
 from secrets_ import PHONE_NUMBER
 
@@ -15,7 +16,9 @@ now = datetime.now()
 hour: int = now.hour
 minute_delay: int = now.minute + 2
 
-count: int = get_var_value()
+varstore_path = os.path.join(os.path.dirname(__file__), "varstore.dat")
+count: int = get_var_value(varstore_path)
+
 message: str = ""
 
 random_facts_india = [
