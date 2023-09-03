@@ -12,6 +12,16 @@ def get_var_value(filename="varstore.dat"):
         f.write(str(val))
         return val
 
+def send_message():
+    if count > len(random_facts_india):
+        return
+    else:
+        message = random_facts_india[count]
+
+
+    pywhatkit.sendwhatmsg(PHONE_NUMBER, f"Random Fact {count}: {message}", hour, minute_delay, 35, True)
+
+
 now = datetime.now()
 hour: int = now.hour
 minute_delay: int = now.minute + 2
@@ -35,12 +45,9 @@ random_facts_india = [
     "Rajasthan has a Temple of Rats. The animal wonders of India continue. Although rats might not be the first species you think of to worship, there is a temple in Rajasthan dedicated to rats."
 ]
 
-if count > len(random_facts_india):
-    message = "Sorry I don't have any random facts anymore"
-else:
-    message = random_facts_india[count]
+send_message()
 
 
-pywhatkit.sendwhatmsg(PHONE_NUMBER, f"Random Fact {count + 1}: {message}", hour, minute_delay, 35, True)
+
 
 
